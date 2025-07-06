@@ -1,0 +1,365 @@
+/* ────────────────────────────────────────────────────────────────
+   About Me Section Base
+──────────────────────────────────────────────────────────────── */
+.about-me {
+  height: 100vh;
+  background-color: var(--color-bg);
+  color:            var(--color-text-primary);
+  padding-top: 50px;
+  overflow: hidden;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Profile Card (big rounded container)
+──────────────────────────────────────────────────────────────── */
+.profile-card {
+  background-color: var(--color-surface);
+  border-radius: 80px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  width: 128%;
+  /* removed max-width so it fills its column */
+  margin-bottom: 1rem;
+}
+
+.profile-card-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Profile Image
+──────────────────────────────────────────────────────────────── */
+.profile-pic {
+  width: 325px;
+  height: 500px;
+  border-radius: 90px;
+  object-fit: cover;
+  margin-right: 2rem;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Profile Details (right side)
+──────────────────────────────────────────────────────────────── */
+.availability-status {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: var(--color-text-secondary);
+}
+.status-dot {
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  animation: blink 2s ease infinite;
+}
+
+.profile-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0.25rem 0;
+}
+.profile-title {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  margin: 0.25rem 0 1rem;
+}
+
+.contact-info p {
+  margin: 0.25rem 0;
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+.contact-info i {
+  margin-right: 0.5rem;
+  color: var(--color-primary);
+}
+
+
+/* Ensure the copy and contact icons don’t disrupt line height */
+.copy-icon,
+.contact-icon {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  transition: transform 0.2s, color 0.2s;
+}
+
+.copy-icon:hover,
+.contact-icon:hover {
+  color: var(--color-primary);
+  transform: scale(1.2);
+}
+
+
+/* ────────────────────────────────────────────────────────────────
+   Social Icons Card
+──────────────────────────────────────────────────────────────── */
+.social-card {
+  background-color: var(--surface-15);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 1rem 2rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  display: flex;
+  gap: 2.75rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.social-card a {
+  font-size: 2rem;
+  color: var(--color-text-secondary);
+  transition: color .3s, transform .3s;
+}
+.social-card a:hover {
+  color: var(--color-secondary);
+  transform: scale(1.2);
+}
+
+/* ────────────────────────────────────────────────────────────────
+   About Content (right column)
+──────────────────────────────────────────────────────────────── */
+.about-heading {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-text-primary);
+}
+.about-description {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+.dynamic-word {
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Certifications & Badges
+──────────────────────────────────────────────────────────────── */
+.badges-section {
+  margin-top: 1.5rem;
+}
+.badges-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-text-primary);
+}
+/* center badges under the heading */
+.badges-container {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  justify-content: center;
+  padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+.badges-container::-webkit-scrollbar {
+  height: 6px;
+}
+.badges-container::-webkit-scrollbar-thumb {
+  background-color: var(--color-text-secondary);
+  border-radius: 3px;
+}
+.badge-item {
+  flex: 0 0 auto;
+  width: 150px;
+  height: 270px;
+  border: 1px solid var(--color-text-secondary);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Blink keyframes
+──────────────────────────────────────────────────────────────── */
+@keyframes blink {
+  0%,10%,30%,50% { opacity:1; }
+  20%,40%        { opacity:0; }
+  60%,100%       { opacity:1; }
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Responsive tweaks
+──────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .profile-card-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .profile-pic {
+    margin: 0 0 1rem;
+    width: 280px;
+    height: 400px;
+  }
+  .profile-details {
+    align-items: center;
+  }
+  .profile-name { font-size: 2rem; }
+  .profile-title { font-size: 1rem; }
+  .about-heading { text-align: center; }
+  .about-description { text-align: center; }
+  .badges-heading { text-align: center; }
+}
+
+
+/* ────────────────────────────────────────────────────────────────
+   Certifications & Badges (larger, border-free, high-contrast)
+──────────────────────────────────────────────────────────────── */
+.badges-container {
+  display: grid;
+  /* bump up the base size of each cell */
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(200px, 1fr);
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.badges-container::-webkit-scrollbar {
+  height: 6px;
+}
+.badges-container::-webkit-scrollbar-thumb {
+  background-color: var(--color-text-secondary);
+  border-radius: 3px;
+}
+
+/* each badge takes up the full grid cell—no border */
+.badge-item {
+  cursor: pointer;
+  width: 100%;
+  height: 0;
+  padding-bottom: 125%; /* keeps 4:5 aspect ratio */
+  position: relative;
+  border: none !important;   /* remove any outline/border */
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* absolutely position the <img> to fill the parent */
+.badge-item .badge-img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* subtle lift on hover */
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* hover state */
+.badge-item:hover .badge-img {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+
+/* brighten the one dark logo */
+.badge-item.dark-logo .badge-img {
+  filter: brightness(3) contrast(1.2) drop-shadow(0 0 5px rgba(255,255,255,0.5));
+}
+
+
+/* ────────────────────────────────────────────────────────────────
+   Badge Hover (enlarge on hover)
+──────────────────────────────────────────────────────────────── */
+.badge-item .badge-img {
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.badge-item:hover .badge-img {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Modal Overlay (backdrop)
+──────────────────────────────────────────────────────────────── */
+.badge-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Modal Content (card)
+──────────────────────────────────────────────────────────────── */
+.badge-modal-content {
+  background-color: var(--color-surface);
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  position: relative;
+  text-align: center;
+}
+
+/* Badge image inside modal */
+.badge-modal-content img {
+  max-width: 300px;
+  max-height: 400px;
+  margin-bottom: 1rem;
+}
+
+/* Modal title */
+.badge-modal-content h4 {
+  margin: 0.5rem 0 1rem;
+  color: var(--color-text-primary);
+}
+
+/* “View on Credly” button */
+.badge-modal-content a {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-primary);
+  color:var(--color-surface);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+.badge-modal-content a:hover {
+  background-color: var(--color-secondary);
+}
+
+/* Close button (“×”) */
+.badge-modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 1.5rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+.badge-modal-close:hover {
+  color: var(--color-text-primary);
+}
+
+/* Hide scrollbar in WebKit browsers (Chrome, Safari) */
+.badges-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar in Firefox */
+.badges-container {
+  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+

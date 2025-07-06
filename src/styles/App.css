@@ -1,0 +1,68 @@
+/* src/styles/App.css */
+
+/* Main Container for all sections */
+.App {
+  text-align: center;
+  height: 100vh;
+  scroll-snap-type: y mandatory; /* Enables vertical scroll snapping */
+  overflow-y: scroll;            /* Ensures the page is scrollable */
+  scroll-behavior: smooth;       /* Smooth scrolling */
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Each section takes up the full height */
+section {
+  height: 100vh;
+  scroll-snap-align: start;      /* Snap to the start of each section */
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+}
+
+/* Optional: a “surface” utility for panels */
+.surface {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+/* Logo Animation (if still in use) */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+/* Header (if you have a landing header section) */
+.App-header {
+  background-color: var(--color-surface);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Link styling */
+.App-link {
+  color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+
+/* Logo spin keyframes */
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

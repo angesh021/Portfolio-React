@@ -1,0 +1,174 @@
+/* ────────────────────────────────────────────────────────────────
+   Navbar Container
+──────────────────────────────────────────────────────────────── */
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 33px;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Main Navbar (blurred, rounded pill)
+──────────────────────────────────────────────────────────────── */
+.custom-navbar {
+  background-color: var(--backdrop-60);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  padding: 18px 20px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.custom-navbar .nav-item {
+  margin: 3px 25px;
+}
+
+.custom-navbar .nav-link {
+  font-size: 16px;
+  color: var(--color-text-primary);
+  transition: color 0.3s ease;
+}
+
+.custom-navbar .nav-link:hover {
+  color: var(--color-secondary) !important;
+}
+
+.vr.custom-divider {
+  width: 1px;
+  background-color: var(--color-text-secondary);
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Gear-button Ripple + Icon Color
+──────────────────────────────────────────────────────────────── */
+/* ripple pseudo-element uses same gear SVG */
+.gear-button {
+  position: relative;
+  z-index: 1003;
+}
+.gear-button.active::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  /* always white SVG, then invert it in light mode below */
+  background-image: url('https://img.icons8.com/ios-filled/50/ffffff/settings.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translate(-50%, -50%) scale(0.7);
+  opacity: 1;
+  animation: gear-ring 0.5s ease-out forwards;
+  z-index: 1002;
+}
+@keyframes gear-ring {
+  to {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.gear-button.active::before {
+  /* ripple uses same filter rules */
+  filter: inherit;
+}
+
+/* The small gear next to “Settings” is an <img>—invert it in light mode */
+.theme-light .settings-header img {
+  filter: invert(1);
+}
+
+/* In dark mode, leave the gear white (no inversion) */
+.theme-dark .settings-header img,
+[data-theme="dark"] .settings-header img {
+  filter: none;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Settings Panel (auto-sized, pop-out)
+──────────────────────────────────────────────────────────────── */
+.custom-settings-panel {
+  /* use your card surface variable (light or dark) */
+  background-color: var(--backdrop-60);
+  /* ensure text uses your primary-text variable */
+  color: var(--color-text-primary);
+
+  border-radius: 20px;
+  padding: 16px 20px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+
+  /* pop out positioning under gear */
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform-origin: top center;
+
+  /* room for two controls side-by-side */
+  width: auto;
+  min-width: 245px;
+  max-width: 90vw;
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 1001;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Header & Description Colors
+──────────────────────────────────────────────────────────────── */
+/* Header (“Settings” text) should use the strong primary text */
+.settings-header {
+  margin-bottom: 12px;
+  color: var(--color-text-primary);
+}
+
+/* Ensure the “Settings” H5 always uses your primary‐text variable */
+.settings-header h5 {
+  color: var(--color-text-primary) !important;
+}
+
+/* Description uses your secondary-text variable */
+.settings-description {
+  margin-bottom: 16px;
+  color: var(--color-text-secondary);
+}
+
+
+/* ────────────────────────────────────────────────────────────────
+   Settings Options Row (never wrap; top-aligned)
+──────────────────────────────────────────────────────────────── */
+.settings-options {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 32px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* Each option: vertical column, centered under its label */
+.settings-options .option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.settings-options .option label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  white-space: nowrap;
+  /* ensure label also picks up primary text color */
+  color: var(--color-text-primary);
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Close‐button color override for light & dark mode
+──────────────────────────────────────────────────────────────── */
+/* Ensure the close icon is fully opaque and picks up the secondary text color */
+.custom-settings-panel .btn-close {
+  color: var(--color-text-secondary) !important;
+  opacity: 1 !important;
+}
